@@ -1,15 +1,15 @@
 
 from scapy.all import sniff ,Ether,IP
-#import kismina duzenleme gerekiyor.
+
 def paket_ayiklayici(paket):
     if IP in paket:
         #mac ve ip adresini sniff fonksiyonun icersinde paket[].src ile cekiyoruz.
         mac_adresi = paket[Ether].src
         ip_adresi = paket[IP].src
-        ip_adresi1 = paket[IP].dst
+        #ip_adresi_dst = paket[IP].dst
         print("source mac Adresi: ", mac_adresi)
         print("source ip Adresi: ", ip_adresi)
-        print("destination ip Adresi: ", ip_adresi1)
+        #print("destination ip Adresi: ", ip_adresi1)
         #dosya yazdiriliyor.
         with open("mac_and_ip.txt", "a") as dosya:
             dosya.write("source mac Adresi: "+mac_adresi + " & ")
